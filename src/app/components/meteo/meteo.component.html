@@ -1,0 +1,68 @@
+<div class="container">
+    <header class="upbar">
+        <span>Meteo</span>
+            <input type="text" placeholder="Ecrire le nom de votre ville" ng-model="ville-input" (keyup)="onChangeEvent($event)" />
+        <div class="buttons">
+            <button class="showMeteo"  ngClass="showMeteo" (click)="showMeteo()" >Afficher Meteo</button>
+            <button class="show5days" ngClass="showMeteo2" (click)="showMeteo2()" >Afficher 5 jours</button>
+        </div>
+    </header>
+    <div *ngIf="div3" class="message">
+        <p>Nom Incorrect</p>
+    </div>
+    <div *ngIf="div1" class="meteoDisplay">
+        <h3>{{ville}}, {{country}}</h3>
+        <p>{{date}}</p>
+        <img src={{iconURL}} alt={{Description}}>
+        <p>{{temp}}</p>
+        <p>{{Description}}</p>
+        <table class="onedaytable">
+            <tr>
+                <th>Latitude</th>
+                <td>{{latitude}}</td>
+            </tr>
+            <tr>
+                <th>Longtitude</th>
+                <td>{{longtitude}}</td>
+            </tr>
+            <tr>
+                <th>Humidité</th>
+                <td>{{Humidite}}</td>
+            </tr>
+            <tr>
+                <th>Pression</th>
+                <td>{{Pression}}</td>
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="div2" class="meteoDisplay5days">
+        <header>
+            <span>Prévision météo 5jours</span>
+        </header>
+        <div class="table">
+            <table class="5daystable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Icon</th>
+                        <th>Température</th>
+                        <th>Température Min</th>
+                        <th>Température Max</th>
+                        <th>Humidité</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let el of info.list ">
+                        <td>{{el.dt_txt}}</td>
+                        <td><img src={{el.weather[0].icon}}></td>
+                        <td>{{el.main.temp}}</td>
+                        <td>{{el.main.temp_min}}</td>
+                        <td>{{el.main.temp_max}}</td>
+                        <td>{{el.main.humidity}}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

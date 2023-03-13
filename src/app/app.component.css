@@ -1,0 +1,10 @@
+.container {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+h2{
+    margin: 30px;
+}
+
